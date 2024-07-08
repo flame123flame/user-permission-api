@@ -11,7 +11,7 @@ import lombok.Setter;
 public class MenuRoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int menuRoleId;
+    private Long menuRoleId;
 
     @ManyToOne
     @JoinColumn(name = "menu_id")

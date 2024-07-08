@@ -84,6 +84,10 @@ public class WebSecurityConfig {
 				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(
+								//unlock token
+								antMatcher("/**"),
+								//unlock token
+								antMatcher("/authenticate/login"),
 								antMatcher("/authenticate/login"),
 								antMatcher("/api/users-management/create"),
 								antMatcher("/authenticate/version")

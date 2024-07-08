@@ -11,7 +11,7 @@ import lombok.Setter;
 public class UserRoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userRoleId;
+    private Long userRoleId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

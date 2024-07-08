@@ -14,7 +14,7 @@ import java.util.Set;
 public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int menuId;
+    private Long menuId;
 
     @Column(nullable = false, length = 50)
     private String title;

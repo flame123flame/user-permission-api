@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ActivityLogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int logId;
+    private Long logId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

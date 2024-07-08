@@ -14,6 +14,7 @@ import java.util.List;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationConfig {
     private Cors cors = new Cors();
+    private Security security = new Security();
     @Getter
     @Setter
     public static class Cors {
@@ -28,5 +29,11 @@ public class ApplicationConfig {
         private List<String> exposeHeaders;
         private Boolean allowCredentials;
         private Long maxAge;
+    }
+
+    @Getter
+    @Setter
+    public static class Security {
+        private boolean enable;
     }
 }
