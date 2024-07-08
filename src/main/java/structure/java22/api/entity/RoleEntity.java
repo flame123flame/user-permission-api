@@ -14,18 +14,15 @@ import java.util.Set;
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
+    private int roleId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, length = 50)
     private String roleName;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private Set<UserEntity> users = new HashSet<>();
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "menu_roles",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "menu_id"))
+    @ManyToMany(mappedBy = "roles")
     private Set<MenuEntity> menus = new HashSet<>();
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<UserEntity> users = new HashSet<>();
 
 }

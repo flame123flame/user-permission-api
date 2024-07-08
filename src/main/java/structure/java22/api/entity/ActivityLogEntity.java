@@ -13,16 +13,19 @@ import java.time.LocalDateTime;
 public class ActivityLogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long logId;
+    private int logId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String activity;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime timestamp = LocalDateTime.now();
+
+
 
 }

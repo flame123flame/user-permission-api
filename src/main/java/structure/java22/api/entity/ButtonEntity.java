@@ -14,15 +14,15 @@ import java.util.Set;
 public class ButtonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long buttonId;
+    private int buttonId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "action", nullable = false, length = 100)
     private String action;
 
-    @ManyToMany(mappedBy = "buttons", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "buttons")
     private Set<MenuEntity> menus = new HashSet<>();
 
 }

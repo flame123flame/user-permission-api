@@ -14,29 +14,38 @@ import java.util.Set;
 public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long menuId;
+    private int menuId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String title;
 
+    @Column(length = 50)
     private String icon;
 
+    @Column(length = 100)
     private String route;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "parent_id")
-    private MenuEntity parentMenu;
+    private MenuEntity parent;
 
-    @OneToMany(mappedBy = "parentMenu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<MenuEntity> subMenus = new HashSet<>();
+    @OneToMany(mappedBy = "parent")
+    private Set<MenuEntity> children = new HashSet<>();
 
-    @ManyToMany(mappedBy = "menus", fetch = FetchType.LAZY)
-    private Set<RoleEntity> roles = new HashSet<>();
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "menu_buttons",
+    @ManyToMany
+    @JoinTable(
+            name = "menu_buttons",
             joinColumns = @JoinColumn(name = "menu_id"),
-            inverseJoinColumns = @JoinColumn(name = "button_id"))
+            inverseJoinColumns = @JoinColumn(name = "button_id")
+    )
     private Set<ButtonEntity> buttons = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "menu_roles",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<RoleEntity> roles = new HashSet<>();
 
 }

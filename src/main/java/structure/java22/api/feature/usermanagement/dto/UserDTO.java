@@ -11,18 +11,9 @@ public class UserDTO {
 	@Getter
     @Setter
     public static class RequestSave  {
-    	  
-	    private Long id;
-	    private Long roleId;
-	    private Long calAgentGroupId;
-	    private String firstName;
-	    private String lastName;
-	    private String nickName;
-	    private String mobile;
 	    private String username;
-	    private String password;
-	    private BigDecimal firstInstallmentSales;
-		private UserType userType;
+		private String password;
+		private String email;
     }
 	
 }

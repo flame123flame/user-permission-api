@@ -85,6 +85,7 @@ public class WebSecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(
 								antMatcher("/authenticate/login"),
+								antMatcher("/api/users-management/create"),
 								antMatcher("/authenticate/version")
 								)
 						.permitAll()
